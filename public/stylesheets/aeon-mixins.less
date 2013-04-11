@@ -1,0 +1,214 @@
+@soft-grey: #a2a2a2;
+
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.no-select {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.aeon-shadow(@x:0px, @y:0px, @spread:16px, @start:-3px, @color:#8b8b8b) {
+	-webkit-box-shadow: @x @y @spread @start @color;
+}
+
+.aeon-round-top(@radius: 5px) {
+	-webkit-border-top-left-radius:@radius;
+	-webkit-border-top-right-radius:@radius;
+}
+
+.aeon-round-bottom(@radius: 5px) {
+	-webkit-border-bottom-left-radius:@radius;
+	-webkit-border-bottom-right-radius:@radius;
+}
+
+.aeon-round-left(@radius: 5px) {
+	-webkit-border-top-left-radius:@radius;
+	-webkit-border-bottom-left-radius:@radius;
+}
+
+.aeon-round-right(@radius: 5px) {
+	-webkit-border-top-right-radius:@radius;
+	-webkit-border-bottom-right-radius:@radius;
+}
+
+.aeon-round(@radius: 5px) {
+	.aeon-round-top(@radius);
+	.aeon-round-bottom(@radius);
+}
+
+.center-margins {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button {
+	.aeon-round(5px);
+	.aeon-shadow(0px, 0px, 5px, #8b8b8b);
+	text-decoration: none;
+	font-style: none;
+	.no-select;	
+	border-top: 1px solid #8c9197;
+	border-right: 1px solid #a3a6ac;
+	border-bottom: 1px solid #bdc0c6;
+	border-left: 1px solid #a3a6ac;
+    cursor:pointer;
+	max-width: 200px;
+	text-align: center;
+	font-size: 18px;
+	padding: 4px;
+  color: #4d4d4d !important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#d8d8d8));
+}
+
+.vertical_listing {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  .listing_item {
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #8b8b8b;
+    .aeon-round;
+    .aeon-shadow;
+    .actions_wrapper {
+      float: right;
+      .model_action {
+        display: inline-block;
+        margin-left: 4px;
+        margin-right: 4px;
+        font-size: 14px;
+      }
+    }
+    .attribute {}
+  }
+}
+
+#AeonWidgetOverlay {
+  position: fixed;
+  background-color: #ccc;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  opacity: 0.6;
+  z-index: 1000;
+}
+
+.aeon_dialog .ui-dialog-titlebar {
+  color: #4d4d4d;
+  background: #4d4d4d;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cfcfcf', endColorstr='#a8a8a8'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#cfcfcf), to(#a8a8a8));
+  background: -moz-linear-gradient(top, #cfcfcf, #a8a8a8); /* for firefox 3.6+ */
+  border: none;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom: 1px solid #515151;
+  border-top: 1px solid #e2e2e2;
+}
+.aeon_dialog {
+  .aeon-shadow;
+  padding: 0px;
+  border: 1px solid #8b8b8b;
+  .ui-dialog-content {
+    background-color: #fcfcfc;
+    .aeon-round;
+    .modal_close_button_wrapper {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+    }
+  }
+}
+
+.aeon_dialog .ui-dialog-title {
+  float: none;
+  text-align: center;
+  display: block;
+}
+
+.tertiary_modal_button {
+  font-size: 14px;
+  width: 124px;
+  border: 1px solid #8b8b8b;
+}
+
+.remote_form_wrapper {
+  padding-bottom: 48px;
+
+  .error_explanation {
+    .error_message_wrapper {
+      margin-top: 4px;
+      margin-bottom: 4px;
+      .aeon-round;
+      padding: 8px;
+      border: 1px solid red;
+      .error_field {
+        color: red;
+        font-weight: bold;
+        margin-right: 8px;
+        display: inline-block;
+      }
+      .error_messages {
+        display: inline-block;
+        .error_message {
+          color: red;
+        }
+      }
+    }
+  }
+
+  .field_wrapper {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    label {
+      width: 200px;
+      text-align: right;
+      display: inline-block;
+      font-family: "Helvetica Neue", Helvetica, Arial, SANS-SERIF;
+
+      font-size: 16px;
+      color: #4b4b4b;
+      text-shadow: 0px 0px 1px #ccc;
+    }
+    input[type="text"]{
+      background-color: #fff;
+      border: 1px solid #8b8b8b;
+      box-shadow:inset 1px 1px 8px -2px #8b8b8b;
+      .aeon-round(3px);
+      font-size: 16px;
+      height: 32px;
+      line-height: 32px;
+      text-indent: 8px;
+      padding: 2px;
+    }
+  }
+  .actions {
+    margin-top: 24px;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    .form_action {
+      .button;
+      font-size: 14px;
+      width: 124px;
+      border: 1px solid #8b8b8b;
+    }
+  }
+}
+
+.selected {
+  background-color: blue;
+}
+
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,172 @@
+<%
+
+public_products = ["Home Link English", "Home Link Spanish", "Community Link"]
+private_products = ["Everybody Link", "Leader Link", "Principal Link", "Teacher Link", "Bully Free Bus Link", "Service Learning Link", "Journal Link"]
+grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8"]
+base_file_system_path = File.join(Rails.root, "public/character_links/")
+base_web_path = "/character_links/"
+
+product_descriptions = {}
+product_descriptions["home_link_english"] = "Home Link English"
+product_descriptions["home_link_spanish"] = "Home Link Spanish"
+product_descriptions["community_link"] = "Community Link"
+product_descriptions["everybody_link"] = "Everybody Link"
+product_descriptions["leader_link"] = "Leader Link"
+product_descriptions["principal_link"] = "Principal Link"
+product_descriptions["teacher_link"] = "Teacher Link"
+product_descriptions["bully_free_bus_link"] = "Bully Free Bus Link"
+product_descriptions["service_learning_link"] = "Service Learning Link"
+product_descriptions["journal_link"] = "Journal Link"
+
+%>
+<div class="school_logo"></div>
+<div class="present_title trait_title"><%= @trait.title %></div>
+<div class="product_listing_wrapper">
+  <div id="HelpToggle">?</div>
+
+  <% private_products.each do |product_name| %>
+    <% if product_name == "Teacher Link" %>
+      <% grades.each do |grade| %>
+
+        <div class="product_listing private_product <%= product_name.gsub(" ", "_").downcase %>">
+          <div class="product_ribbon product_ribbon_top"></div>
+          <%
+             file_name =  "#{@trait.title.downcase.gsub(" ", "_")}_#{product_name.gsub(" ", "_").downcase}_grade_#{grade.downcase}.pdf"
+             absolute_file_path = File.join(base_file_system_path, file_name)
+             absolute_web_path = "#{base_web_path}#{file_name}"
+          %>
+
+          <% if FileTest.exist?(absolute_file_path) %>
+            <a href="<%= absolute_web_path %>" class="product_link"><%=  product_name %> - Grade <%=  grade %> </a>
+          <% else %>
+            <a href="<%= absolute_web_path %>" class="product_link missing_file"><%=  product_name %> - Grade <%=  grade %></a>
+          <% end %>
+          <div class="product_description hidden"><%= "#{product_descriptions[product_name.gsub(" ", "_").downcase]}" %></div>
+        </div>
+
+      <% end %>
+
+    <% else %>
+
+      <div class="product_listing private_product <%= product_name.gsub(" ", "_").downcase %>">
+        <div class="product_ribbon product_ribbon_top"></div>
+        <%
+           file_name =  "#{@trait.title.downcase.gsub(" ", "_")}_#{product_name.gsub(" ", "_").downcase}.pdf"
+           absolute_file_path = File.join(base_file_system_path, file_name)
+           absolute_web_path = "#{base_web_path}#{file_name}"
+        %>
+
+        <% if FileTest.exist?(absolute_file_path) %>
+          <a href="<%= absolute_web_path %>" class="product_link"><%=  product_name %></a>
+        <% else %>
+          <a href="<%= absolute_web_path %>" class="product_link missing_file"><%=  product_name %></a>
+        <% end %>
+        <div class="product_description hidden"><%= "#{product_descriptions[product_name.gsub(" ", "_").downcase]}" %></div>
+      </div>
+
+    <% end %>
+
+  <% end %>
+
+  <% public_products.each do |product_name| %>
+    <div class="product_listing public_product <%= product_name.gsub(" ", "_").downcase %>">
+      <div class="product_ribbon product_ribbon_top"></div>
+      <%
+         file_name =  "#{@trait.title.downcase.gsub(" ", "_")}_#{product_name.gsub(" ", "_").downcase}.pdf"
+         absolute_file_path = File.join(base_file_system_path, file_name)
+         absolute_web_path = "#{base_web_path}#{file_name}"
+      %>
+
+
+      <% if product_name == "Home Link Spanish" %>
+        <% if FileTest.exist?(absolute_file_path) %>
+          <a href="<%= absolute_web_path %>" class="product_link">Enlace de inicio</a>
+        <% else %>
+          <a href="<%= absolute_web_path %>" class="product_link missing_file">Enlace de inicio</a>
+        <% end %>
+      <% else %>
+        <% if FileTest.exist?(absolute_file_path) %>
+          <a href="<%= absolute_web_path %>" class="product_link"><%=  product_name %></a>
+        <% else %>
+          <a href="<%= absolute_web_path %>" class="product_link missing_file"><%=  product_name %></a>
+        <% end %>
+      <% end %>
+      <div class="product_description hidden"><%= "#{product_descriptions[product_name.gsub(" ", "_").downcase]}" %></div>
+    </div>
+
+  <% end %>
+
+
+</div>
+
+
+<div id="CharacterLinksDefinition">
+  <div class="header">Character Links for Families and the Community</div>
+  Character Links is an easy to use resource that provides a series of brief, grade-level appropriate lessons taught in the classroom.  Character Links goes beyond the classroom and involves not only school leaders, teachers, students and principals, but parents and the entire community as well.  A different trait is featured each week.
+  <br/><br/>
+  The Home Link and Community Link above provide activities to promote family involvement, and positive behavior.  The Home Link reinforces what students are learning in the classroom, while the Community Link provides activities to keep the community informed and involved as well.
+</div>
+
+<script type="text/javascript">
+
+  function is_private(){
+    $('#SadlierLogo').attr('is_private', 'true');
+    $("#CharacterLinksDefinition").hide();
+    $('.private_product').show();
+  }
+
+  function not_private(){
+    $('#SadlierLogo').attr('is_private', 'false');
+      $("#CharacterLinksDefinition").show();
+    $('.private_product').hide();
+  }
+
+  function toggle_help(){
+    var product_listing_wrapper = $(".product_listing_wrapper");
+    if(product_listing_wrapper.hasClass('help_mode')){
+      $(".product_description").addClass('hidden');
+      product_listing_wrapper.removeClass('help_mode');
+    } else {
+      product_listing_wrapper.addClass('help_mode');
+      $(".product_description").removeClass('hidden');
+    }
+  }
+
+  $(document).on('click', '#HelpToggle', function(event){
+    toggle_help();
+  });
+
+
+  $(document).ready(function(){
+  $('.service_learning_link').find('.product_link').text('Catholic Identity Link');
+    //not_private();
+    is_private();
+
+    var home_button = $("<div></div>")
+        home_button.attr('id', "HomeButton")
+        home_button.addClass('button');
+        home_button.html("Home");
+
+    $("#CharacterLinksFooter").prepend(home_button);
+
+    $(document).on('click', '#HomeButton', function(){
+      location = '/';
+    });
+
+    //toggle_help();
+
+
+  });
+
+
+  $(document).on('click', '#SadlierLogo', function(){
+    if( $(this).attr('is_private') == "true" ){
+      not_private();
+    } else {
+      is_private();
+    }
+  });
+
+
+</script>
+

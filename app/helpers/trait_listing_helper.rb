@@ -1,0 +1,2 @@
+module TraitListingHelper
+end

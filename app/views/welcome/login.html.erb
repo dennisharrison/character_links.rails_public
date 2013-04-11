@@ -1,0 +1,42 @@
+<div class='aeon_form_wrapper login_form_wrapper'>
+  <div class='form_header'><span class='title'>Sign-in</span></div>
+  <form accept-charset="UTF-8" action="/users/sign_in" class="new_user" id="new_user" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="rK/HjTHqGM/v23vGL8XTRrqGN+yWu79FzuNR5JPszyk=" /></div>
+    <div class='form_field'>
+      <input id='user_email' class='user_name_field' name='user[email]' size='60' type='email' placeholder='Enter your email address' />
+    </div>
+
+    <div class='form_field'>
+      <input id='user_password'  class='password_field' name='user[password]' size='60' type='password' placeholder='Enter your password' />
+    </div>
+
+    <div class='form_button_wrapper login_button_wrapper'><input id="LoginButton" name="commit" type="submit" value="Go" /></div>
+  </form>
+</div>
+
+<div id="CharacterLinksDefinition" class="on_login_page">
+  <div class="header">Character Links</div>
+  Character Links is a systemic solution uniquely designed to build schools and communities of character.  The program includes standards-based lessons, messages, activities, and ideas that target specific audiences to promote positive behavior, family involvement, and community engagement.
+  <br/><br/>
+  These "Links" are made available to education leaders, teachers, principals, administrators, counselors, bus drivers, students, and their families, as well as the community at large.  It is an efficient framework to engage all stake-holders in supporting positive behavior, building self-esteem, and serves as a proven bully prevention program.
+  <br/><br/>
+  Each "Link" focuses on the same positive behavior quality each week, keeping everyone on the same page, to create a totally connected community of good character.
+</div>
+
+<script type="text/javascript">
+
+  $(document).ready(function(event){
+     $('.aeon_form_wrapper').hide();
+     $("#CharacterLinksDefinition").css('margin-top', '128px');
+  });
+
+
+  $(document).on('click', '#LoginButton', function(event){
+    event.preventDefault();
+    location = '/';
+  });
+
+  $(document).on('click', '#CharacterLinksDefinition', function(event){
+      $("#CharacterLinksDefinition").hide();
+      $('.aeon_form_wrapper').fadeIn();
+  });
+</script>

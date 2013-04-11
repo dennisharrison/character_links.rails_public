@@ -1,0 +1,147 @@
+<div class="school_logo"></div>
+<div class="present_title trait_title">Character Links Schedule</div>
+<ol id="TraitsListingWrapper" class="traits_listing_wrapper">
+  <% @traits.each do |trait| %>
+
+  <li id="Trait_<%= trait.id %>" class="trait_listing" trait_id="<%= trait.id %>">
+    <a class="trait_title" href="/present/<%= trait.title %>"><%= trait.title %></a>
+    <!--<div class="schedule_field_wrapper"><input class="schedule_field" trait_id="<%= trait.id %>" type="text" value="<%= trait.schedule_field %>" /></div>-->
+    <div class="schedule_field_wrapper"><input class="schedule_field disabled" trait_id="<%= trait.id %>" type="text" value="<%= trait.schedule_field %>" disabled="true" /></div>
+  </li>
+
+  <% end %>
+</ul>
+
+
+<script type="text/javascript">
+
+
+
+  function set_trait_order(){
+    var order = 1;
+    var sorted_array = $("#TraitsListingWrapper").sortable('toArray');
+    ordered_array = {};
+
+    var post_url = "/set_trait_order.json"
+
+    _.each(sorted_array, function(item){
+      if(item != ''){
+        var element = $('#' + item);
+        element.attr('trait_order', order);
+        var schedule_field = element.find('.schedule_field').val();
+        var trait_id = element.attr('trait_id');
+        var sorted_object = {};
+        sorted_object.schedule_field = schedule_field;
+        sorted_object.id = trait_id;
+        sorted_object.trait_order = order;
+        ordered_array[order] = sorted_object;
+        order ++;
+      }
+    });
+
+    $("#SaveEdits").html("Saving!");
+
+    $.ajax({
+      url: post_url,
+      dataType: 'json',
+      type: 'post',
+      data: {trait_listing:ordered_array},
+      statusCode: {
+        200: function(){
+          $("#SaveEdits").html("Saved!");
+          set_saved();
+        }
+      }
+    });
+  }
+
+  function set_saved(){
+    $("#SaveEdits").hide();
+    $("#SaveEdits").html("Save Edits");
+  }
+
+
+  function set_edited(){
+    $("#SaveEdits").show();
+  }
+
+  $(document).on('click', '#SaveEdits', function(){
+    set_trait_order();
+  });
+
+  function lock_edit(){
+    $('#TraitsListingWrapper').sortable({
+      placeholder: "trait_placeholder",
+      revert: 180,
+      scroll: true,
+      scrollSensitivity: 25,
+      tolerance: "intersect",
+      distance: 10,
+      update: function(event, ui){
+        console.log("Setting to Edited");
+        //set_edited();
+      }
+    });
+  }
+
+  var save_edits = $("<div></div>").attr('id', "SaveEdits").addClass('button').html("Save Edits");
+
+  $(document).ready(function(){
+    $("#CharacterLinksFooter").prepend(save_edits);
+    $("#SaveEdits").hide();
+
+    //is_admin();
+
+  });
+
+  $(document).on('keyup', '.schedule_field', function(){
+    set_edited();
+  });
+
+  function is_admin(){
+    console.log("Admin On");
+    $('.schedule_field').removeAttr('disabled');
+    $('.schedule_field').removeClass('disabled');
+
+    $('#TraitsListingWrapper').sortable('enable');
+
+    $('#TraitsListingWrapper').sortable({
+      placeholder: "trait_placeholder",
+      revert: 180,
+      scroll: true,
+      scrollSensitivity: 25,
+      tolerance: "intersect",
+      distance: 10,
+      update: function(event, ui){
+        console.log("Setting to Edited");
+        set_edited();
+      }
+    });
+
+    $('#TraitsListingWrapper .schedule_field_wrapper input').on('click.sortable mousedown.sortable',function(ev){
+      ev.target.focus();
+    });
+
+    $("#SadlierLogo").attr('is_admin', "true");
+
+  }
+
+  function not_admin(){
+    console.log("Admin Off");
+    $("#SaveEdits").hide();
+    $('.schedule_field').attr('disabled', "disable");
+    $('.schedule_field').addClass('disabled');
+    $('#TraitsListingWrapper').sortable('disable');
+    $("#SadlierLogo").attr('is_admin', "false");
+  }
+
+  $(document).on('click', '#SadlierLogo', function(){
+    if( $(this).attr('is_admin') == "true" ){
+      not_admin();
+    } else {
+      is_admin();
+    }
+  });
+
+
+</script>

@@ -1,0 +1,46 @@
+<div class="traits_index_wrapper">
+  <div class="traits_index vertical_listing">
+
+  </div>
+  <div class="actions_wrapper">
+    <!--<div id="" class="button model_action trait_action" model="trait" action="new">New Trait</div>-->
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  var trait_json_data = <%= @traits.to_json(:root => false).html_safe %>;
+
+  var traits_config = {
+    uri: '/traits.json',
+    render_options: {
+      model_name: 'trait',
+      model_data: trait_json_data,
+      container: '.traits_index',
+      attributes: ['title'],
+      actions: ['edit', 'destroy'],
+      render_callback: function(){},
+      render_callback_options: {}
+    },
+    actions: new ModelActions('trait'),
+    success_callback: render_vertical_list
+  }
+
+  $(document).ready(function(){
+    fetch_resource_data(traits_config);
+    $(".trait_action[action='new']").attr('NewTraitButton');
+
+
+    var new_trait = $("<div></div>")
+        new_trait.attr('id', "NewTraitButton")
+        new_trait.attr('model', "trait");
+        new_trait.attr('action', "new");
+        new_trait.addClass('button model_action trait_action');
+        new_trait.html("New Trait");
+
+    $("#CharacterLinksFooter").prepend(new_trait);
+
+
+  });
+
+</script>

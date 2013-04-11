@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Character Links <%= yield :title %></title>
+  <script>
+    function getHostWithoutPort(){
+      var rawHost = location.host;
+      var host = rawHost.split(':')[0]
+      return host;
+    }
+
+  </script>
+
+  <script type="text/javascript" src="/javascripts/packages/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/rails.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/jquery-ui-1.8.17.custom.min.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/jquery.dependClass.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/jquery.ui.touch-punch.min.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/moment.min.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/json2.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/underscore-min.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/list.min.js"></script>
+  <script type="text/javascript" src="/javascripts/aeon_drag_and_drop.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/jquery.cookie.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/aeon_boilerplate.js"></script>
+  <script type="text/javascript" src="/javascripts/packages/jquery.total-storage.min.js"></script>
+  <script type="text/javascript" src="/javascripts/character_links.js?<%= rand(99999) %>"></script>
+
+  <%= csrf_meta_tags %>
+  <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+  <META HTTP-EQUIV="Expires" CONTENT="-1">
+  <meta charset="UTF-8" />
+  <meta name="google" value="notranslate">
+  <meta http-equiv="Content-Language" content="en" />
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>-->
+  <link href="/stylesheets/jquery-ui-1.8.17.custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/character_links.less" media="screen" rel="stylesheet/less" type="text/css" />
+  <script type="text/javascript" src="/javascripts/packages/less-1.3.0.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      less.watch();
+    });
+  </script>
+
+  <!-- Content from beyond -->
+  <%= yield :head %>
+
+</head>
+<body>
+<!--<div id="NavigationWrapper">-->
+<!--<ul id="UsersNavItem" class="navigation_crumb"><a href="/admin/users">Users</a></ul>-->
+<!--<ul id="RolesNavItem" class="navigation_crumb"><a href="/admin/roles">Roles</a></ul>-->
+<!--</div>-->
+<div id="CharacterLinksContentWrapper">
+  <%= yield %>
+</div>
+
+<div id="CharacterLinksFooter"><img id="SadlierLogo" is_admin="false" src="/images/Sadlier_transparent.gif"></div>
+</body>
+</html>

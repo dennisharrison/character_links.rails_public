@@ -1,0 +1,590 @@
+@import "aeon-mixins";
+
+.user_form_wrapper {
+  .roles_index_wrapper {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ccc;
+    .aeon-round;
+    padding: 24px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    .roles_index {
+      .role_listing {
+        .attribute {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+.aeon_form_wrapper {
+  .center-margins;
+  .aeon-shadow;
+  .aeon-round(9px);
+  background: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#ececec));
+  padding: 24px;
+}
+
+.aeon_form_wrapper form label {
+  display: inline-block;
+  float: none;
+  width: auto;
+  margin: 0;
+  text-align: left;
+  line-height: auto;
+  font-size: 100%;
+}
+
+.aeon_form_wrapper form select,
+.aeon_form_wrapper form input[type='text'],
+.aeon_form_wrapper form input[type='email'],
+.aeon_form_wrapper form input[type='password'],
+.aeon_form_wrapper form textarea,
+.aeon_form_wrapper form input.text {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, Sans-Serif;
+  font-size: 100%;
+  width: auto;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  z-index: 250;
+}
+
+.aeon_form_wrapper .form_header {
+  text-align: center;
+}
+
+.aeon_form_wrapper .form_header .title {
+  text-transform: uppercase;
+  text-align: center;
+  color: #888;
+  margin: 0;
+  letter-spacing: -1px;
+  font-family: Helvetica;
+  font-size: 26px;
+  text-shadow: 1px 1px 1px #444;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.aeon_form_wrapper .form_header .title:before, .aeon_form_wrapper .form_header .title:after {
+  background-color: #555;
+  content: "";
+  height: 2px;
+  width: 120px;
+  display: inline-block;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.aeon_form_wrapper .form_header .title:before {
+  background-image: -webkit-gradient(linear, right top, left top, from(#777), to(#fff));
+  background-image: -webkit-linear-gradient(right, #777, #fff);
+  background-image: -moz-linear-gradient(right, #777, #fff);
+  background-image: -ms-linear-gradient(right, #777, #fff);
+  background-image: -o-linear-gradient(right, #777, #fff);
+  background-image: linear-gradient(right, #777, #fff);
+  margin-right: 24px;
+}
+
+.aeon_form_wrapper .form_header .title:after {
+  background-image: -webkit-gradient(linear, left top, right top, from(#777), to(#fff));
+  background-image: -webkit-linear-gradient(left, #777, #fff);
+  background-image: -moz-linear-gradient(left, #777, #fff);
+  background-image: -ms-linear-gradient(left, #777, #fff);
+  background-image: -o-linear-gradient(left, #777, #fff);
+  background-image: linear-gradient(left, #777, #fff);
+  margin-left: 24px;
+}
+
+.aeon_form_wrapper form .form_field input.user_name_field {
+  .center-margins;
+  .aeon-round(5px);
+  background-color: #fafafa;
+  background-image: url('/stylesheets/images/login-sprite.png');
+  padding: 15px;
+  padding-left: 30px;
+  background-repeat: no-repeat;
+  background-position: 8px 0px;
+  width: 350px;
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  -webkit-box-shadow:inset 1px 1px 6px 0px #ccc;
+  border: 1px solid #ccc;
+}
+
+.aeon_form_wrapper form .form_field input.password_field {
+  .center-margins;
+  .aeon-round(5px);
+  background-color: #fafafa;
+  background-image: url('/stylesheets/images/login-sprite.png');
+  padding: 15px;
+  padding-left: 30px;
+  background-repeat: no-repeat;
+  background-position: 8px -50px;
+  width: 350px;
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  -webkit-box-shadow:inset 1px 1px 6px 0px #ccc;
+  border: 1px solid #ccc;
+}
+
+.login_form_wrapper {
+  width: 550px;
+  margin-top: 200px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e1e1e1));
+  border: 1px solid #333;
+}
+
+.login_button_wrapper  input[type='submit'] {
+ .aeon-round(9px);
+ .center-margins;
+  width: 175px;
+  padding-bottom: 25px;
+  font-size: 24px;
+  font-family: Helvetica;
+  letter-spacing: -1px;
+  text-align: center;
+  text-shadow: 0px 1px 0px #fff;
+  font-weight: bold;
+  color: #2a751c;
+  height: 52px;
+  line-height: 48px;
+  vertical-align: middle;
+  display: block;
+  border: 1px solid #888;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #95e086),
+    color-stop(1, #82cc73)
+  );
+  -webkit-box-shadow: 0px 0px 5px 1px #98c48f;
+  margin-top: 24px;
+}
+
+body {
+  background-image: url('/images/card_background.png');
+  margin: 0;
+  height: 100%;
+}
+
+.present_title.trait_title {
+  text-align: center;
+  font-size: 38px;
+  //border: 1px solid #ccc;
+  //border-bottom: 1px dotted #ccc;
+  //padding-bottom: 8px;
+  margin-bottom: 0px;
+  margin-top: -2px;
+  //background-color: #f5f5f5;
+  //.aeon-round-top(9px);
+  text-shadow: 0px -2px 1px #555;
+  color: #999;
+  opacity: 0.8;
+}
+
+
+.product_listing_wrapper {
+  width: 960px;
+  padding-left: 1px;
+  .center-margins;
+  position: relative;
+
+  #HelpToggle {
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 46px;
+    text-indent: 2px;
+    .aeon-round(33px);
+    border: 2px solid #fff;
+    color: #fff;
+    text-shadow: -1px -1px 1px #000;
+    .aeon-shadow;
+    background: rgb(238,238,238); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    z-index: 4;
+    top: -48px;
+    .no-select;
+  }
+
+  .product_listing {
+    border: 1px solid #777;
+    .aeon-round(6px);
+    width: 292px;
+    height: 148px;
+    margin: 12px;
+    display: inline-block;
+    position: relative;
+
+
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 38%, rgba(244,244,244,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(38%,rgba(255,255,255,1)), color-stop(100%,rgba(244,244,244,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 38%,rgba(244,244,244,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 38%,rgba(244,244,244,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 38%,rgba(244,244,244,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 38%,rgba(244,244,244,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f4f4',GradientType=0 ); /* IE6-9 */
+
+    //background-image: url('/images/bg_pattern.png');
+
+    .product_ribbon_top {
+      height: 32px;
+      width: 292px;
+      .center-margins;
+      border: 1px solid #777;
+      .aeon-round-top(5px);
+      margin-top: -1px;
+      margin-left: -1px;
+    }
+
+    .product_ribbon {
+      background-color: red;
+    }
+
+    .product_link {
+      padding: 12px;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      color: #333;
+      height: 116px;
+      .aeon-round-bottom;
+      padding-top: 42px;
+      box-shadow:inset 0px 3px 8px -1px #8b8b8b;
+      font-size: 16px;
+      color: #555;
+      text-shadow: 0px 0px 1px #444;
+
+    }
+
+    .missing_file {
+      color: red;
+    }
+
+    .product_description {
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      background-color: #fcfcfc;
+      .aeon-round(6px);
+      .aeon-round-top(3px);
+      .aeon-shadow;
+      padding: 8px;
+      color: #555;
+      opacity: 0.9;
+    }
+
+  }
+
+}
+
+.product_listing_wrapper {
+
+  .home_link_english {
+    .product_ribbon {
+      background-color: #469ac4;
+    }
+  }
+
+  .home_link_spanish {
+    .product_ribbon {
+      background-color: #f18d05;
+    }
+  }
+
+  .community_link {
+    .product_ribbon {
+      background-color: #113f8c;
+    }
+  }
+
+  .service_learning_link {
+    .product_ribbon {
+      background-color: #d70060;
+    }
+  }
+
+  .leader_link {
+    .product_ribbon {
+      background-color: #61ae24;
+    }
+  }
+
+  .principal_link {
+    .product_ribbon {
+      background-color: #a2137f;
+    }
+  }
+
+  .teacher_link {
+    .product_ribbon {
+      background-color: #e54028;
+    }
+  }
+
+  .everybody_link {
+    .product_ribbon {
+      background-color: #01a4a4;
+    }
+  }
+
+  .bully_free_bus_link {
+    .product_ribbon {
+      background-color: #f2d729;
+    }
+  }
+
+}
+
+#CharacterLinksContentWrapper {
+  padding-bottom: 86px;
+}
+
+
+#CharacterLinksFooter {
+  position: fixed;
+  bottom: 0px;
+  background-color: white;
+  border-top: 1px solid #333;
+  padding: 4px;
+  .aeon-shadow;
+  text-align: right;
+  width: 100%;
+  height: 72px;
+  clear: both;
+
+
+  #SadlierLogo  {
+    margin-right: 8px;
+    cursor: pointer;
+  }
+}
+
+.traits_listing_wrapper {
+  min-height: 500px;
+  //border: 1px solid #000;
+  
+  .trait_placeholder {
+    height: 48px;
+    background-color: #ececec;
+    opacity: 0.5;
+    border: 1px solid #ccc;
+  }
+
+  margin-top: 24px;
+  width: 680px;
+  //border: 1px solid #333;
+  .center-margins;
+  counter-reset: li; /* Initiate a counter */
+  list-style: none; /* Remove default numbering */
+  padding: 0;
+  margin-top: 24px;
+  padding-top: 24px;
+  padding-left: 64px;
+
+  .trait_listing:before {
+    content: counter(li);
+    counter-increment: li;
+    text-align: center;
+    color: #fcfcfc;
+    border: 2px solid #a2a2a2;
+    text-shadow: 1px 1px 3px #000;
+    font-size: 20px;
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    background: #ccc;
+    line-height: 36px;
+    z-index: -1;
+    margin-left: -64px;
+    margin-top: 4px;
+    .aeon-round(20px);
+    font-style: italic;
+
+    background: rgb(96,108,136); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(96,108,136,1) 0%, rgba(63,76,107,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(96,108,136,1)), color-stop(100%,rgba(63,76,107,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */
+  }
+
+  .trait_listing {
+    //border: 1px solid;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 18px;
+    .aeon-round-left(12px);
+    border: 1px solid #ddd;
+
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+
+
+    //margin-bottom: 2px;
+    .trait_title {
+      font-size: 20px;
+      display: inline-block;
+      width: 270px;
+      margin-top: 0px;
+      text-decoration: none;
+      color: #000;
+      letter-spacing: 1px;
+    }
+    .schedule_field_wrapper {
+      display: inline-block;
+      width: 300px;
+      //border: 1px solid #333;
+      height: 24px;
+      padding: 0;
+      .schedule_field {
+        cursor: text;
+        margin: 0;
+        margin-top: 4px;
+        vertical-align: top;
+        display: inline-block;
+        border: 1px solid #777;
+        .aeon-round(3px);
+        font-weight: bold;
+        width: 260px;
+        margin-left: 24px;
+        padding-left: 4px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 18px;
+      }
+      .schedule_field.disabled {
+        opacity: 1;
+        color: #333;
+        letter-spacing: -1px;
+        border: 0;
+        background-color: transparent;
+        //border-bottom: 1px solid #000;
+      }
+    }
+  }
+}
+
+#SaveEdits {
+  float: left;
+  margin-top: 14px;
+  margin-left: 16px;
+  width: 124px;
+  height: 36px;
+  line-height: 28px;
+}
+
+.traits_index_wrapper {
+  .traits_index {
+    width: 680px;
+    .center-margins;
+    .trait_listing {
+      height: 52px;
+      background: rgb(255,255,255); /* Old browsers */
+      background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+      background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+
+      .attribute {
+        margin-top: 5px;
+        margin-left: 8px;
+      }
+    }
+  }
+
+}
+
+#NewTraitButton {
+  float: left;
+  margin-top: 14px;
+  margin-left: 16px;
+  width: 124px;
+  height: 36px;
+  line-height: 28px;
+}
+
+#HomeButton {
+  float: left;
+  margin-top: 14px;
+  margin-left: 16px;
+  width: 124px;
+  height: 36px;
+  line-height: 28px;
+}
+
+#CharacterLinksDefinition {
+    margin-top: 48px;
+    .aeon-round;
+    width: 650px;
+    .center-margins;
+    .aeon-shadow;
+    border: 1px solid #8b8b8b;
+
+    padding: 36px;
+    cursor: pointer;
+
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 38%, rgba(244,244,244,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(38%,rgba(255,255,255,1)), color-stop(100%,rgba(244,244,244,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 38%,rgba(244,244,244,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 38%,rgba(244,244,244,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 38%,rgba(244,244,244,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 38%,rgba(244,244,244,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f4f4',GradientType=0 ); /* IE6-9 */
+    color: #333;
+
+
+    .header {
+        font-size: 24px;
+        margin-bottom: 24px;
+        text-align: center;
+        color: #000;
+        border-bottom: 1px solid #ccc;
+
+    }
+}
+
+.school_logo {
+  background-image: url('/images/school_logo.gif');
+  width: 188px;
+  height: 64px;
+  .center-margins;
+  margin-top: 8px;
+  //margin-bottom: 12px;
+}

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  trait_order: 1
+  title: MyString
+  scheduled: false
+  schedule_field: MyString
+  trait_listing_id: 1
+
+two:
+  trait_order: 1
+  title: MyString
+  scheduled: false
+  schedule_field: MyString
+  trait_listing_id: 1

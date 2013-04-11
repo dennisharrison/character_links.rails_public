@@ -1,0 +1,30 @@
+<div class="form_wrapper remote_form_wrapper trait_form_wrapper">
+  <%= form_for @trait, :html => { :id => @request_uuid, :class => 'remote_form' }, :remote => true do |f| %>
+    <div class="error_explanation"></div>
+
+    <div class="field_wrapper title">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+
+
+    <div class="actions">
+      <%= f.submit :id => 'TraitSubmitButton', :class => 'form_action' %>
+    </div>
+
+  <% end %>
+
+</div>
+
+<script>
+
+  $('#<%= @request_uuid %>').bind('ajax:success', function(data, status, xhr){
+    fetch_resource_data(<%= @trait.class.name.downcase %>s_config);
+    $(this).closest('.ui-dialog-content').find('.close_modal_button').click();
+  });
+  $('#<%= @request_uuid %>').bind('ajax:error', function(data, status, xhr){
+    showErrors($('#<%= @request_uuid %>').find('.error_explanation'), status.responseText);
+  });
+
+</script>
