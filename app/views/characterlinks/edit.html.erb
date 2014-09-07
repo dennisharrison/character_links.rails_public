@@ -1,0 +1,161 @@
+<%
+if @characterlink.content.blank?
+	contenteditable = "Your content goes here"
+else
+	contenteditable = @characterlink.content.html_safe
+end 
+
+%>
+
+<script type="text/javascript" src="/javascripts/popline.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/popline.css" />
+
+<%= form_for [@characterlink], :html => {:id => "CharacterLinkEditForm"} do |f| %>
+  <%= f.hidden_field :content %>
+  <div><%= f.label :link_type %><%= f.text_field :link_type %></div>
+  <div><%= f.label :standards %><%= f.text_field :standards %></div>
+
+
+  <div id="CharacterLinkContentEditable" contenteditable="true">
+  	<%= contenteditable %>
+  </div>
+
+
+	<%= f.submit @submit_button_text %>
+<% end %>
+
+<div id="drop_zone"><noscript>JavaScript must be enabled to use the drop zone.</noscript></div>
+    <output id="list"></output>
+
+<script type="text/javascript">
+var savedRange, isInFocus;
+
+function insertHtmlAtCursor(html) {
+    var range, node;
+    if (window.getSelection && window.getSelection().getRangeAt) {
+        range = window.getSelection().getRangeAt(0);
+        //node = range.createContextualFragment(html);
+        node = html.get(0);
+        range.insertNode(node);
+    } else if (document.selection && document.selection.createRange) {
+        document.selection.createRange().pasteHTML(html);
+    }
+}
+
+function saveSelection() {
+    console.log('Saving Selection!');
+    if (window.getSelection)//non IE Browsers
+    {
+        savedRange = window.getSelection().getRangeAt(0);
+    }
+    else if (document.selection)//IE
+    {
+        savedRange = document.selection.createRange();
+    }
+}
+
+function restoreSelection() {
+    isInFocus = true;
+    document.getElementById("CharacterLinkContentEditable").focus();
+    if (savedRange != null) {
+        if (window.getSelection)//non IE and there is already a selection
+        {
+            var s = window.getSelection();
+            if (s.rangeCount > 0)
+                s.removeAllRanges();
+            s.addRange(savedRange);
+        }
+        else
+        if (document.createRange)//non IE and no selection
+        {
+            window.getSelection().addRange(savedRange);
+        }
+        else
+        if (document.selection)//IE
+        {
+            savedRange.select();
+        }
+    }
+}
+//this part onwards is only needed if you want to restore selection onclick
+var isInFocus = false;
+function onDivBlur() {
+    console.log('In onDivBlur')
+    isInFocus = false;
+}
+
+function cancelEvent(e) {
+    if (isInFocus == false && savedRange != null) {
+        if (e && e.preventDefault) {
+            //alert("FF");
+            e.stopPropagation(); // DOM style (return false doesn't always work in FF)
+            e.preventDefault();
+        }
+        else {
+            window.event.cancelBubble = true;//IE stopPropagation
+        }
+        restoreSelection();
+        return false; // false = IE style
+    }
+}
+
+
+(function(){
+            var processFiles = function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+
+                // FileList object of File objects
+                var files = event.dataTransfer.files;
+                var output = [];
+                for (var i = 0, f; f = files[i]; i++) {
+                    var reader = new FileReader();
+
+                    // closure to capture file info
+                    reader.onload = (function(file, index) {
+                        return function(e) {
+                            var dataUri = e.target.result,
+                                base64 = dataUri.substr(dataUri.indexOf(',') + 1),
+                                textarea, image, figcaption;
+                            textarea = ['<textarea onfocus="this.select()">', base64, '</textarea>'].join('');
+                            if (file.type.match('image.*')) {
+                                image = ['<img src="', dataUri, '" title="', file.name, '"/>'].join('');
+                                insertHtmlAtCursor($(image));
+                            }
+                        };
+                    })(f, i);
+
+                    // read file as data URI
+                    reader.readAsDataURL(f);
+                }
+
+                if (files.length) {
+                    
+                }
+            };
+
+            // add event listeners if File API is supported
+            var dropZone = document.getElementById('CharacterLinkContentEditable');
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                dropZone.addEventListener('drop', processFiles, false);
+            }
+
+            // change doc element class to show JS support
+            var docEl = document.documentElement;
+            docEl.className = docEl.className.replace('no-', '');
+        })();
+
+
+
+
+$("#CharacterLinkContentEditable").popline();
+
+$("#CharacterLinkEditForm").submit(function(){
+    //alert("Me First!");
+    var richcontent = $("#CharacterLinkContentEditable").html();    
+    $("#characterlink_content").val(richcontent);
+    return true;
+})
+
+</script>

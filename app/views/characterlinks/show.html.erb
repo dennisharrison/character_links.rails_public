@@ -1,0 +1,34 @@
+<%
+if @characterlink.content.blank?
+	contenteditable = "Your content goes here"
+else
+	contenteditable = @characterlink.content.html_safe
+end
+
+%>
+
+
+  <div id="CharacterLinkType">
+    <span class='first_word'><%= @characterlink.link_type.split(' ')[0] %></span><%= @characterlink.link_type.split(' ')[1] %>
+  </div>
+  <div id="CharacterLinkTraitTitle">
+    <%= @characterlink.trait.title %>
+  </div>
+  <div id="CharacterLinkContent">
+  	<%= contenteditable %>
+  </div>
+
+  <% unless @characterlink.standards.blank? %>
+    <div id="CharacterLinkStandards">
+        <div id="CharacterLinkStandardsHeader">
+            <img src="/images/lit_bulb.png">
+        </div>
+        <span class="segment_title">Standards:</span> <%= @characterlink.standards %>
+  </div>
+  <% end %>
+
+
+
+<script type="text/javascript">
+
+</script>

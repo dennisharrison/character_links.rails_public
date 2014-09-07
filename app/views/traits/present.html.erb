@@ -1,8 +1,10 @@
 <%
 
 public_products = ["Home Link English", "Home Link Spanish", "Community Link"]
-private_products = ["Everybody Link", "Leader Link", "Principal Link", "Teacher Link", "Bully Free Bus Link", "Counselor Link", "Journal Link"]
-grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8"]
+#private_products = ["Everybody Link", "Leader Link", "Principal Link", "Teacher Link", "Bully Free Bus Link", "Counselor Link", "Journal Link"]
+#grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8"]
+private_products = ["Everybody Link", "Leader Link", "Principal Link", "Teacher Link", "Journal Link"]
+grades = ["7", "8"]
 base_file_system_path = File.join(Rails.root, "public/character_links/")
 base_web_path = "/character_links/"
 
@@ -36,8 +38,14 @@ product_descriptions["journal_link"] = "Writing activities and prompts that focu
              absolute_web_path = "#{base_web_path}#{file_name}"
           %>
 
-          <% if FileTest.exist?(absolute_file_path) %>
-            <a href="<%= absolute_web_path %>" class="product_link"><%=  product_name %> - Grade <%=  grade %> </a>
+          <% 
+          character_link = @trait.Characterlinks.where("link_type like?", "%#{product_name} - Grade #{grade}%").first
+          %>
+
+          <% if not character_link.blank? %>
+            <a href="/characterlinks/<%= character_link.id %>" class="product_link"><%= product_name %> - Grade <%=  grade %></a>
+          <% elsif FileTest.exist?(absolute_file_path) %>
+            <a href="<%= absolute_web_path %>" class="product_link"><%=  product_name %> - Grade <%=  grade %></a>
           <% else %>
             <a href="<%= absolute_web_path %>" class="product_link missing_file"><%=  product_name %> - Grade <%=  grade %></a>
           <% end %>
@@ -56,7 +64,13 @@ product_descriptions["journal_link"] = "Writing activities and prompts that focu
            absolute_web_path = "#{base_web_path}#{file_name}"
         %>
 
-        <% if FileTest.exist?(absolute_file_path) %>
+        <% 
+          character_link = @trait.Characterlinks.where("link_type like?", "%#{product_name}%").first
+        %>
+
+        <% if not character_link.blank? %>
+          <a href="/characterlinks/<%= character_link.id %>" class="product_link"><%= product_name %></a>
+        <% elsif FileTest.exist?(absolute_file_path) %>
           <a href="<%= absolute_web_path %>" class="product_link"><%=  product_name %></a>
         <% else %>
           <a href="<%= absolute_web_path %>" class="product_link missing_file"><%=  product_name %></a>
@@ -79,13 +93,34 @@ product_descriptions["journal_link"] = "Writing activities and prompts that focu
 
 
       <% if product_name == "Home Link Spanish" %>
-        <% if FileTest.exist?(absolute_file_path) %>
-          <a href="<%= absolute_web_path %>" class="product_link">Enlace de inicio</a>
+        <% 
+          character_link = @trait.Characterlinks.where("link_type like?", "%Enlace de'inicio%").first
+        %>
+        <% if not character_link.blank? %>
+          <a href="/characterlinks/<%= character_link.id %>" class="product_link">Enlace de'inicio</a>
+        <% elsif FileTest.exist?(absolute_file_path) %>
+          <a href="<%= absolute_web_path %>" class="product_link">Enlace de'inicio</a>
         <% else %>
-          <a href="<%= absolute_web_path %>" class="product_link missing_file">Enlace de inicio</a>
+          <a href="<%= absolute_web_path %>" class="product_link missing_file">Enlace de'inicio</a>
+        <% end %>
+      <% elsif product_name == "Home Link English" %>
+        <% 
+          character_link = @trait.Characterlinks.where("link_type like?", "%Home Link%").first
+        %>
+        <% if not character_link.blank? %>
+          <a href="/characterlinks/<%= character_link.id %>" class="product_link">Home Link English</a>
+        <% elsif FileTest.exist?(absolute_file_path) %>
+          <a href="<%= absolute_web_path %>" class="product_link">Home Link English</a>
+        <% else %>
+          <a href="<%= absolute_web_path %>" class="product_link missing_file">Home Link English</a>
         <% end %>
       <% else %>
-        <% if FileTest.exist?(absolute_file_path) %>
+        <% 
+          character_link = @trait.Characterlinks.where("link_type like?", "%#{product_name}%").first
+        %>
+        <% if not character_link.blank? %>
+          <a href="/characterlinks/<%= character_link.id %>" class="product_link"><%= product_name %></a>
+        <% elsif FileTest.exist?(absolute_file_path) %>
           <a href="<%= absolute_web_path %>" class="product_link"><%=  product_name %></a>
         <% else %>
           <a href="<%= absolute_web_path %>" class="product_link missing_file"><%=  product_name %></a>

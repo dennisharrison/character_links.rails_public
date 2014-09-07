@@ -18,7 +18,7 @@
       model_data: trait_json_data,
       container: '.traits_index',
       attributes: ['title'],
-      actions: ['edit', 'destroy'],
+      actions: ['links', 'edit', 'destroy'],
       render_callback: function(){},
       render_callback_options: {}
     },
@@ -39,6 +39,15 @@
         new_trait.html("New Trait");
 
     $("#CharacterLinksFooter").prepend(new_trait);
+
+    $(document).off('click', '.trait_action[action="links"]');
+    $(document).on('click', '.trait_action[action="links"]', function(){
+      var self = $(this);
+      var item_id = self.attr('item_id');
+      var model = self.attr('model');
+      var url = "/" + model + "s/" + item_id;
+      window.location = url;
+    });
 
 
   });

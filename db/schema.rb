@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025160431) do
+ActiveRecord::Schema.define(:version => 20140812175316) do
+
+  create_table "characterlinks", :force => true do |t|
+    t.integer  "trait_id"
+    t.integer  "characterlink_order"
+    t.string   "link_type"
+    t.text     "content"
+    t.text     "standards"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "trait_listings", :force => true do |t|
     t.string   "title"

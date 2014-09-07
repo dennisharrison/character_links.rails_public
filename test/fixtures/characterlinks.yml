@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  trait_id: 1
+  link_type: MyString
+  content: MyText
+  standards: MyText
+
+two:
+  trait_id: 1
+  link_type: MyString
+  content: MyText
+  standards: MyText

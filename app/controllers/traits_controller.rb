@@ -12,7 +12,7 @@ class TraitsController < ApplicationController
 
   def show
     @trait = Trait.find(params[:id])
-    render :partial => 'show', :layout => false
+    render 'show'
   end
 
   def new

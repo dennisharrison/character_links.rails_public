@@ -609,8 +609,206 @@ body {
 
 .district_logo {
   background-image: url('/images/district_logo.png');
-  width: 200px;
-  height: 89px;
+  width: 119px;
+  height: 125px;
   .center-margins;
   margin-top: 8px;
+  margin-bottom: 8px;
+  .aeon-shadow;
+  .aeon-round;
 }
+
+#CharacterLinkContentEditable {
+  min-height: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 24px;
+  padding: 12px;
+  outline: 0px solid transparent;
+}
+
+.rainbowfont {
+      animation: rainbowfont 3s infinite; /* animation-name followed by duration in seconds*/
+         /* you could also use milliseconds (ms) or something like 2.5s */
+      -webkit-animation: rainbowfont 3s infinite; /* Chrome and Safari */
+    }
+
+    @keyframes rainbowfont
+    {
+      0%   {COLOR: red;}
+      25%  {COLOR: yellow;}
+      50%  {COLOR: blue;}
+      75%  {COLOR: green;}
+      100% {COLOR: red;}
+    }
+
+    @-webkit-keyframes rainbowfont
+    {
+      0%   {COLOR: red;}
+      25%  {COLOR: yellow;}
+      50%  {COLOR: blue;}
+      75%  {COLOR: green;}
+      100% {COLOR: red;}
+    }
+
+.lesson_day {
+  .rainbowfont;
+}
+
+.boxer_wrapper {
+  .aeon-shadow;
+  .aeon-round;
+  border: 1px solid #8b8b8b;
+  background-color: #fcfcfc;
+  text-align: center;
+  padding: 12px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nice_text {
+  text-shadow: #a2a2a2 1px 1px 3px;
+}
+
+.reading_text {
+  text-shadow: #888 0px 1px 1px;
+}
+
+#CharacterLinkType {
+  .nice_text;
+  font-size: 4em;
+  display: block;
+  height: 1.5em;
+  vertical-align: middle;
+  line-height: 1.5em;
+  letter-spacing: -3px;
+  font-family: Helvetica, verdana, arial, Sans-Serif;
+  color: #0a678b;
+  margin-left: 32px;
+}
+
+#CharacterLinkType .first_word {
+  color: #ba2735;
+}
+
+#CharacterLinkTraitTitle {
+  .nice_text;
+  color: #ba2735;
+  font-size: 4em;
+  height: 1em;
+  line-height: 1em;
+  display: inline-block;
+  float: right;
+  vertical-align: top;
+  margin-top: -1.25em;
+  margin-right: 32px;
+  letter-spacing: -3px;
+}
+
+#CharacterLinkContent {
+  .reading_text;
+  margin-left: 48px;
+  margin-right: 48px;
+  border-top: 1px solid #ccc;
+  padding-top: 16px;
+}
+
+#CharacterLinkStandards {
+  border: 1px dotted #B2B2B2;
+  padding: 12px;
+  margin-top: 48px;
+  background-color: #e1edf2;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  .reading_text;
+}
+
+#CharacterLinkStandardsHeader {
+  margin-top: -32px;
+}
+
+.segment_title {
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+
+
+#CharacterLinkContent {
+  a[style]{
+    background-color: transparent !important;
+  } 
+  b[style]{
+    background-color: transparent !important;
+  }
+  p[style]{
+    background-color: transparent !important;
+  }
+}
+
+#CharacterLinkContentEditable {
+  a[style]{
+    background-color: transparent !important;
+  } 
+  b[style]{
+    background-color: transparent !important;
+  }
+  p[style]{
+    background-color: transparent !important;
+  }
+}
+
+.trait_show {
+  #TraitTitle {
+    margin: 24px;
+    font-weight: bold;
+    .nice_text;
+    font-size: 36px;
+    text-align: center;
+  }
+  .characterlink_listing {
+    width: 680px;
+    .center-margins;
+    .listing_item {
+      eight: 52px;
+      background: rgb(255,255,255); /* Old browsers */
+      background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+      background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+
+      .attribute {
+        margin-top: 5px;
+        margin-left: 8px;
+      }
+    }
+  }
+}
+
+
+
+#NewCharacterLinkButton {
+  float: left;
+  margin-top: 14px;
+  margin-left: 16px;
+  width: 124px;
+  height: 36px;
+  line-height: 28px;
+}
+
+
+
+
+
+
+
+/* EOF */

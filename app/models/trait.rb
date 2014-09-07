@@ -1,5 +1,6 @@
 class Trait < ActiveRecord::Base
   belongs_to :trait_listing
+  has_many :Characterlinks
   after_create :setup_defaults
   attr_accessible :schedule_field, :scheduled, :title, :trait_listing_id, :trait_order
   default_scope order('trait_order')

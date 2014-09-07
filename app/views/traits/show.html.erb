@@ -1,0 +1,70 @@
+<div class="trait_show_wrapper">
+  <div class="trait_show">
+    <div id="TraitTitle"><%= @trait.title %></div>
+    <div class="characterlink_listing vertical_listing">
+    <% @trait.Characterlinks.each do |cl| %>
+    	
+			<div class="listing_item characterlink_listing" model="characterlink" model_id="<%= cl.id %>">
+				<div class="actions_wrapper">
+					<div class="button model_action characterlink_action" action="edit" model="characterlink" item_id="<%= cl.id %>" container="#characterlink_ManageModal">
+						Edit
+					</div>
+					<div class="button model_action characterlink_action" action="destroy" model="characterlink" item_id="<%= cl.id %>" container="#characterlink_ManageModal">
+						Destroy
+					</div>
+				</div>
+				<div class="attribute" model="characterlink" attribute="link_type" model_id="<%= cl.id %>"><%= cl.link_type %></div></div>
+
+    <% end %>
+  	</div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+    var new_characterlink = $("<div></div>")
+        new_characterlink.attr('id', "NewCharacterLinkButton")
+        new_characterlink.attr('model', "characterlink");
+        new_characterlink.attr('action', "new");
+        new_characterlink.attr('trait_id', '<%= @trait.id %>');
+        new_characterlink.addClass('button model_action characterlink_action');
+        new_characterlink.html("New Link");
+
+    $("#CharacterLinksFooter").prepend(new_characterlink);
+
+		$(document).off('click', '#NewCharacterLinkButton');
+    $(document).on('click', '#NewCharacterLinkButton', function(){
+    	var self = $(this);
+    	var trait_id = self.attr('trait_id');
+    	var url = "/create_characterlink_for_trait/" + trait_id;
+    	window.location = url;
+    });
+
+    $(document).off('click', '.characterlink_action[action="edit"]');
+    $(document).on('click', '.characterlink_action[action="edit"]', function(){
+      var self = $(this);
+      var item_id = self.attr('item_id');
+      var model = self.attr('model');
+      var url = "/" + model + "s/" + item_id + "/edit";
+      window.location = url;
+    });
+
+    $(document).off('click', '.characterlink_action[action="destroy"]');
+    $(document).on('click', '.characterlink_action[action="destroy"]', function(){
+      var self = $(this);
+      var item_id = self.attr('item_id');
+      var model = self.attr('model');
+      $.ajax({
+            url: "/" + model + "s/" + item_id,
+            type: 'delete',
+            dataType: 'JSON',
+            success: function(data){
+                $('.' + model + '_listing[model_id=' + item_id + ']').remove();
+            }
+        });
+    });
+
+
+  });
+
+</script>

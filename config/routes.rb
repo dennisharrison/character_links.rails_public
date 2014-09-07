@@ -3,7 +3,12 @@ CharacterLinksRails::Application.routes.draw do
 
   devise_for :users
 
-  resources :traits
+  resources :traits do
+    resources :characterlinks
+  end
+  resources :characterlinks
+
+  match "/create_characterlink_for_trait/:trait_id" => "characterlinks#create_characterlink_for_trait"
 
   match "/present/:trait_title" => "traits#present"
 
